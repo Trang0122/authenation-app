@@ -1,13 +1,16 @@
 {
   "name": "form-template-driven",
   "version": "0.0.0",
+  "homepage": "https://trang0122.github.io/authenation-app.github.io/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
     "bootstrap": "^4.5.0",
+    "gh-pages": "^2.2.0",
     "jquery": "^3.5.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
