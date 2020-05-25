@@ -1,0 +1,4 @@
+<div class="list-group">
+    <a *ngFor="let p of listProduct" [routerLink]="[ './', p.id ]">{{p.name}}</a>
+</div>
+<router-outlet></router-outlet>

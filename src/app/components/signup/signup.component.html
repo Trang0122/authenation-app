@@ -1,0 +1,41 @@
+<div class="offset-sm-3 col-sm-6">
+<form [formGroup]="form" (ngSubmit)="signup(form)">
+    <div class="text-center">
+        <legend>Sign Up</legend>
+      <p class="success">Have an acount?</p>
+      </div>
+      <fieldset formGroupName="user">
+        <div class="form-group">
+          <input type="text" class="form-control"  placeholder="UserName" required formControlName="username">
+          <small id="emailHelpId" class="waring" 
+          *ngIf="form.get('user')?.get('username')?.errors?.required 
+          && form.get('user').get('username')?.touched">
+          Vui lòng điền username</small>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control"  placeholder="Email" formControlName="email">
+          <small id="emailHelpId" class="waring" 
+          *ngIf="form.get('user')?.get('email')?.error?.email
+          && form.get('user')?.get('email')?.touched
+          ">Vui lòng nhập lại mail</small>
+  
+        </div>
+      <div class="form-group">
+        <input type="password" class="form-control"  placeholder="Password" formControlName="password">
+        <small id="emailHelpId" class="waring" 
+        *ngIf="form.get('user')?.get('password').errors?.forbiddenPassword
+         && form.get('user')?.get('password')?.touched">Password phải có từ 6 kí tự, có chữ hoa, chữ thường, số và kí tự đặc biệt</small>
+      </div>
+      </fieldset>
+    <div class="form-group  text-right" >
+        <button type="submit" class="btn btn-success" 
+        [disabled]="form.get('user')?.get('password').errors?.forbiddenPassword
+        || form.get('user')?.get('username')?.errors?.required
+        || form.get('user')?.get('email')?.error?.email">Submit</button>
+    </div>
+</form>
+</div>
+
+<!-- <pre>
+  {{form.get('user')?.get('email').errors | json}}
+</pre> -->

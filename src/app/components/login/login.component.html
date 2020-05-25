@@ -1,0 +1,34 @@
+<div class="offset-sm-3 col-sm-6">
+    <form action="" [formGroup]="userLogin" (ngSubmit)="login(userLogin)">
+      <div class="text-center">
+        <legend>Sign In</legend>
+      <p class="success">Need an acount?</p>
+      </div>
+      <fieldset formGroupName="user">
+        <div class="form-group">
+          <input type="email" class="form-control" formControlName="email" placeholder="User Name">
+          <small class="waring" *ngIf="userLogin.get('user')?.get('email')?.errors?.invalidusername">Bạn không thể chọn tên này, vui lòng đặt tên khác</small>
+          <small class="waring" *ngIf="userLogin.get('user')?.get('email')?.errors?.required && userLogin.get('user').get('email')?.touched">Bạn không thể để trống trường này</small>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Password" formControlName="password" >
+          <small id="emailHelpId" class="waring" 
+          *ngIf="userLogin.get('user').get('password').invalid
+          && 
+          userLogin.get('user').get('password').touched">Mật khẩu cần ít nhất 6 kí tự</small>
+        </div>
+      </fieldset>
+        <div class="form-group text-right">
+            <button type="submit" class="btn btn-success" 
+                [disabled]= "userLogin.get('user').get('password').invalid 
+                || userLogin.get('user')?.get('email').invalid"
+            >Submit
+            </button>
+        </div>
+  </form>
+  </div>
+  <!-- <pre>
+      {{user.get('password')?.errors | json}}
+      <br>
+      {{user.get('userName')?.errors | json}}
+  </pre> -->
